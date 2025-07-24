@@ -2,11 +2,22 @@
 let amigos = [];
 
 function agregarAmigo() {
-    const amigo = document.getElementById("amigo").value;
-    if (amigo === "") {
-        alert("Por favor, inserte un nombre.");
-        return;
-    }
-    amigos.push(amigo);
-    document.getElementById("amigo").value = "";
+  const amigo = document.getElementById("amigo").value;
+  if (amigo === "") {
+    alert("Por favor, inserte un nombre.");
+    return;
+  }
+  amigos.push(amigo);
+  document.getElementById("amigo").value = "";
+  actualizarListaAmigos();
+}
+
+function actualizarListaAmigos() {
+  const showAmigo = document.getElementById("listaAmigos");
+  showAmigo.innerHTML = "";
+  amigos.forEach((amigo) => {
+    const li = document.createElement("li");
+    li.textContent = amigo;
+    showAmigo.appendChild(li);
+  });
 }
